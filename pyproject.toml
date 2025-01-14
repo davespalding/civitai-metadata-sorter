@@ -1,0 +1,27 @@
+[project]
+name = "civitai-metadata-sorter"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "David"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.1"
+pylint = "^3.3.3"
+pytest = "^8.3.4"
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+pythonpath = "."

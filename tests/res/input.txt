@@ -1,0 +1,42 @@
+Wood_Block_Printing_1400-1500.safetensors
+Base Model
+
+SDXL 1.0
+Training
+
+Steps: 500
+Epochs: 10
+Usage Tips
+
+Clip Skip: 1
+
+---------------------------------------
+continuous line art.safetensors
+Base Model
+
+SDXL 1.0
+Usage Tips
+
+Clip Skip: 2
+Trigger Words
+
+continuous line art
+
+---------------------------------------
+Teletext__Pixel_Screens_SDXL.safetensors
+Base Model
+
+SDXL 1.0
+Training
+
+Steps: 3 375
+Epochs: 10
+Usage Tips
+
+Clip Skip: 2
+Strength: 0.8
+Trigger Words
+
+p1x3lt3xt
+
+---------------------------------------
