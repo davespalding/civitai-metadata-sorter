@@ -66,16 +66,21 @@ def sort_datablocks(blocks):
     return list(sorted(blocks, key=lambda d: d.name.lower()))
 
 
-def check_list_lengths(sourcel, sortedl):
+def are_lists_equal_length(sourcel, sortedl):
     """Compares lengths of two lists"""
     return len(sourcel) == len(sortedl)
 
 
 def backup_file(path):
     """Backup target file"""
-    suffix = datetime.now().strftime("%Y%m%d%H%M%S")
+    suffix = get_timenow_str('%Y%m%d%H%M%S')
     target = f'{path.split(".")[0]}-{suffix}.txt'
     shutil.copy(path, target)
+
+
+def get_timenow_str(strformat):
+    """Get datetime.now() as str"""
+    return datetime.now().strftime(strformat)
 
 
 def main(args):
@@ -85,7 +90,7 @@ def main(args):
     sorted_blocks = sort_datablocks(blocks_list)
     sorted_list = datablocks_to_list(sorted_blocks)
 
-    if not check_list_lengths(source_list, sorted_list):
+    if not are_lists_equal_length(source_list, sorted_list):
         raise ValueError('Input and output lengths are not equal!')
 
     if args.backup:
