@@ -1,0 +1,40 @@
+name: main pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze-n-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v4
+
+      - name: Setup a local virtual environment
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment based on the dependencies lock file
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
+
+      - name: Install project dependencies
+        run: poetry install --with dev
+
+      - name: Run pylint
+        run: poetry run pylint .
+
+      - name: Run flake8
+        run: poetry run flake8
+
+      - name: Run automated tests
+        run: poetry run pytest -v

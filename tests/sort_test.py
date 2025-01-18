@@ -9,9 +9,9 @@ from sort import sort
 @patch('sort.sort.write_txt')
 def test_sort(mock_write_txt, capsys):
     """Test output validity"""
-    expected_list = sort.read_txt('res/expected.txt')
+    expected_list = sort.read_txt('tests/res/expected.txt')
 
-    args = MagicMock(file='res/input.txt', backup=False)
+    args = MagicMock(file='tests/res/input.txt', backup=False)
     sort.main(args)
 
     mock_write_txt.assert_called_once()
@@ -27,7 +27,7 @@ def test_sort(mock_write_txt, capsys):
 def test_sort_error(mock_write_txt, mock_are_lists_equal_length):
     """Test ValueError raise"""
     mock_are_lists_equal_length.return_value = False
-    args = MagicMock(file='res/input.txt', backup=False)
+    args = MagicMock(file='tests/res/input.txt', backup=False)
 
     with pytest.raises(ValueError):
         sort.main(args)
@@ -37,7 +37,7 @@ def test_sort_error(mock_write_txt, mock_are_lists_equal_length):
 
 def test_datablocks_to_list():
     """Test datablocks_to_list() function"""
-    expected_list = sort.read_txt('res/expected.txt')
+    expected_list = sort.read_txt('tests/res/expected.txt')
     datablocks = sort.list_to_datablocks(expected_list)
     sorted_blocks = sort.sort_datablocks(datablocks)
     sorted_list = sort.datablocks_to_list(sorted_blocks)
@@ -47,7 +47,7 @@ def test_datablocks_to_list():
 
 def test_are_lists_equal_length():
     """Test check_list_lengths() function"""
-    expected_list = sort.read_txt('res/expected.txt')
+    expected_list = sort.read_txt('tests/res/expected.txt')
     datablocks = sort.list_to_datablocks(expected_list)
     sorted_blocks = sort.sort_datablocks(datablocks)
     sorted_list_eq = sort.datablocks_to_list(sorted_blocks)

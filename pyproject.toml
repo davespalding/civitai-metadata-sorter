@@ -1,5 +1,5 @@
 [project]
-name = "civitai-metadata-sorter"
+name = "sort"
 version = "0.1.0"
 description = ""
 authors = [
