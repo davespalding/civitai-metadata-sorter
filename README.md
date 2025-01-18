@@ -21,5 +21,8 @@ options:
   -b, --backup          Create backup of target file.
 ```
 
+## PowerShell template
+For myself (and other Windows users) I created a PowerShell script template, which I can use on my desktop environment to quickly call this tool to process a wanted file.
+
 ## License
 This repo is under MIT license.
